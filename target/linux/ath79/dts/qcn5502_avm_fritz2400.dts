@@ -7,6 +7,24 @@
 	compatible = "avm,fritz2400", "qca,qcn5500", "qca,qca9560";
 };
 
+&mdio0 {
+	status = "okay";
+
+	phy0: ethernet-phy@0 {
+		reg = <0>;
+		phy-mode = "sgmii";
+	};
+};
+
+&eth0 {
+	status = "okay";
+
+	phy-handle = <&phy0>;
+	phy-mode = "sgmii";
+
+	pll-data = <0x03000000 0x00000101 0x00001313>;
+};
+
 &spi {
 	status = "okay";
 
