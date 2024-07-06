@@ -17,12 +17,17 @@
 };
 
 &eth0 {
-	status = "okay";
-
+	pll-data = <0x03000000 0x00000101 0x00001313>;
 	phy-handle = <&phy0>;
 	phy-mode = "sgmii";
+	status = "okay";
 
-	pll-data = <0x03000000 0x00000101 0x00001313>;
+	gmac-config {
+		device = <&gmac>;
+
+		switch-phy-addr-swap = <1>;
+		switch-phy-swap = <1>;
+	};
 };
 
 &spi {
@@ -45,6 +50,12 @@
 			};
 
 			partition@1 {
+				label = "tffs (1)";
+				reg = <0x20000 0x70000>;
+				read-only;
+			};
+
+			partition@2 {
 				compatible = "avm,eva-firmware";
 				label = "firmware";
 				reg = <0x90000 0x1f70000>;
