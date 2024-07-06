@@ -588,6 +588,15 @@ define Device/avm_fritz1750e
 endef
 TARGET_DEVICES += avm_fritz1750e
 
+define Device/avm_fritz2400
+  $(Device/avm)
+  SOC := qcn5502
+  IMAGE_SIZE := 15232k
+  DEVICE_MODEL := FRITZ!Repeater 2400
+  SUPPORTED_DEVICES += fritz2400
+endef
+TARGET_DEVICES += avm_fritz2400
+
 define Device/avm_fritz300e
   $(Device/avm)
   SOC := ar7242
